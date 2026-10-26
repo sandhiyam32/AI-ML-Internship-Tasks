@@ -1,0 +1,16 @@
+PassengerId,Survived,Pclass,Name,Sex,Age,Fare,Embarked
+1,0,3,John Smith,male,22,7.25,S
+2,1,1,Emily Johnson,female,38,71.28,C
+3,1,3,Michael Brown,female,26,7.92,S
+4,1,1,Sarah Williams,female,35,53.1,S
+5,0,3,David Jones,male,28,8.05,S
+6,0,3,Robert Davis,male,40,10.5,Q
+7,0,1,Anna Miller,female,31,51.86,S
+8,0,3,James Wilson,male,18,7.75,S
+9,1,3,Linda Moore,female,27,11.13,C
+10,1,2,Daniel Taylor,male,45,21.68,S
+11,1,1,Sophia Anderson,female,24,30.5,C
+12,0,3,William Thomas,male,52,13.0,S
+13,1,2,Olivia Jackson,female,29,26.55,S
+14,0,3,Thomas White,male,33,7.9,Q
+15,1,2,Emma Harris,female,21,15.75,C
