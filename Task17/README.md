@@ -8,7 +8,7 @@ Understand how well a classification model distinguishes between two classes at 
 
 ## Dataset and Model
 
-- **Dataset:** Breast Cancer Wisconsin dataset included in Scikit-learn
+- **Dataset:** `breast_cancer.csv` (Breast Cancer Wisconsin dataset)
 - **Model:** Logistic Regression
 - **Positive class:** Malignant
 
@@ -24,9 +24,9 @@ The features are scaled before training, and the dataset is split into training 
 Install the required libraries:
 
 ```bash
-pip install scikit-learn matplotlib
+pip install pandas scikit-learn matplotlib
 ```
 
 ## Run
 
-Open `roc_auc.ipynb` in Jupyter Notebook or VS Code and run the cells from top to bottom. The notebook prints the AUC score and displays the ROC curve.
+Keep `breast_cancer.csv` in the same folder as `roc_auc.ipynb`. Open the notebook in Jupyter Notebook or VS Code and run the cells from top to bottom. The notebook prints the AUC score and displays the ROC curve.
