@@ -2,51 +2,31 @@
 
 ## Objective
 
-Compare K-Means clustering configurations without labeled targets. The program standardizes the customer features, calculates the silhouette score for multiple values of K, selects the highest-scoring configuration, and creates a comparison chart.
+Compare K-Means clustering configurations without labeled targets. The notebook standardizes customer features, calculates the silhouette score for K=2 through K=10, selects the highest-scoring K, and plots a comparison chart.
 
 ## Dataset
 
-`Mall_Customers.csv` contains 36 sample customer records. The analysis uses `AnnualIncome_kUSD` and `SpendingScore`. `CustomerID` is an identifier and is not used as a clustering feature.
+`Mall_Customers.csv` — 36 customer records with three columns:
 
-## Requirements
-
-Python 3.9 or later, plus:
-
-```bash
-pip install pandas scikit-learn matplotlib
-```
+| Column | Description |
+|---|---|
+| `CustomerID` | Identifier (excluded from clustering) |
+| `AnnualIncome_kUSD` | Annual income in thousands of USD |
+| `SpendingScore` | Spending score (1–100) |
 
 ## Run
 
-From this folder:
+Open `silhouette_evaluation.ipynb` in Jupyter Notebook or JupyterLab with `Mall_Customers.csv` in the same folder, then run all cells top to bottom.
 
-```bash
-python silhouette_evaluation.py
-```
+The notebook will:
+1. Load and validate the CSV
+2. Standardize `AnnualIncome_kUSD` and `SpendingScore` with `StandardScaler`
+3. Fit K-Means for each K in the range and compute the silhouette score
+4. Print a score table highlighting the best K
+5. Save `silhouette_scores.png` and display the bar chart
 
-The program prints scores for K=2 through K=10, marks the highest-scoring configuration, saves `silhouette_scores.png`, and displays the chart. To save the chart without opening a window:
+## Interpreting the result
 
-```bash
-python silhouette_evaluation.py --no-show
-```
+The silhouette score ranges from -1 to 1. A higher score means samples are better matched to their own cluster than to neighboring clusters. The K with the highest score is a useful starting point, not a definitive answer — domain knowledge should inform the final choice.
 
-You can set a different K range or CSV path:
-
-```bash
-python silhouette_evaluation.py --min-k 2 --max-k 8 --data Mall_Customers.csv --no-show
-```
-
-The CSV must include `AnnualIncome_kUSD` and `SpendingScore` columns.
-
-## How to interpret the result
-
-The silhouette score ranges from -1 to 1. A higher score generally means samples are closer to their assigned cluster than to neighboring clusters. A low or negative score can indicate overlapping or poorly separated clusters. The highest score in the tested range is a useful selection guide, not proof that the configuration is best for every use case.
-
-Silhouette evaluation is an internal clustering measure: it compares distances in the feature space and does not require known labels. It is different from classification evaluation, which compares predictions against target labels.
-
-## Run the Jupyter notebook
-
-Open silhouette_evaluation.ipynb in Jupyter Notebook or JupyterLab with Mall_Customers.csv in the same folder, then run all cells from top to bottom. The notebook displays the score table and comparison chart and saves silhouette_scores.png in the folder.
-
-
-The notebook searches the current folder and common Task25 parent-folder locations for the CSV, so it can be opened from Jupyter started in the project folder or the Task25 folder.
+Silhouette evaluation is an internal measure: it uses only feature-space distances and requires no ground-truth labels.
